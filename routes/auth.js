@@ -5,10 +5,18 @@ const { registerValidation, loginValidation } = require("../validation");
 const bcrypt = require("bcryptjs");
 
 //RENDER REGISTER PAGE
-router.get("/register", (req, res) => res.render("register"));
+router.get("/register", (req, res) => {
+  loginCheck = 0;
+  let user;
+  res.render("register", { loginCheck, user });
+});
 
 //RENDER LOGIN PAGE
-router.get("/login", (req, res) => res.render("login"));
+router.get("/login", (req, res) => {
+  loginCheck = 0;
+  let user;
+  res.render("login", { loginCheck, user });
+});
 
 router.get("/logout", (req, res) => {
   res.clearCookie("auth-token");

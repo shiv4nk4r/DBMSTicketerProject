@@ -1,66 +1,10 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Ticketer</a>
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarText"
-    aria-controls="navbarText"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#"
-          >Home <span class="sr-only">(current)</span></a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Book Tickets</a>
-      </li>
-      <% if(user && user.accountType==0) { %>
-      <li class="nav-item">
-        <a class="nav-link" href="/admin/addMovie">Add Movies</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/admin/addTheatre">Add Theatre</a>
-      </li>
-      <% }%> <% if(user && user.accountType==2) { %>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Critic Movies</a>
-      </li>
-      <% }%>
-    </ul>
-    <span class="navbar-text">
-      <% if(loginCheck==0){ %>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/user/login">Login / Signin</a>
-        </li>
-      </ul>
-      <% } else { %>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/user/logout"
-            >Logout as <% if(user) {%> <%= user.name %> <% } %></a
-          >
-        </li>
-      </ul>
-      <% } %>
-    </span>
-  </div>
-</nav>
-
 <div class="row mt-5">
   <div class="col-md-6 m-auto">
     <div class="card card-body">
       <h1 class="text-center mb-3">
         Add Theatre
       </h1>
-      <form action="/admin/addmovie" method="POST">
+      <form action="/admin/addTheatre" method="POST">
         <div class="form-group">
           <label for="name">Theatre Name</label>
           <input
