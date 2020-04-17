@@ -1,3 +1,33 @@
 <div class="container-fluid mt-4">
-  <div class="h2">Book Ticket</div>
+  <div class="h2">Select the show to book the ticket</div>
+</div>
+<div class="container-fluid mt-4">
+  <div class="row">
+    <% for(var show of shows) { %>
+    <div class="col-auto mb-3">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <% for (var theatre of theatres){ %> <% if(theatre._id ==
+          show.theatre_id) { %>
+          <h5 class="card-title"><%= theatre.name %></h5>
+          <h6 class="card-subtitle mb-2 text-muted"><%= theatre.location %></h6>
+          <% } %> <% } %>
+          <h6 class="card-subtitle mb-2 text-muted">Time: <%= show.time %></h6>
+          <h6 class="card-subtitle mb-2 text-muted">Date: <%= show.date %></h6>
+          <h6 class="card-subtitle mb-2 text-muted">
+            Seats Remaining: <%= show.seatsavail %>
+          </h6>
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            onclick="request_access(this); window.location.href = '/bookticket';"
+            id="<%= show._id %>"
+          >
+            Book Tickets
+          </button>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
 </div>

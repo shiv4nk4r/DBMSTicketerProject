@@ -1,6 +1,7 @@
 const router = require("express").Router();
-const Movies = require("../model/movies");
+const Shows = require("../model/shows");
 const verify = require("./verifyToken");
+const Theatre = require("../model/theatre");
 
 router.get("/", async (req, res) => {
   let loginCheck = 0;
@@ -14,12 +15,13 @@ router.get("/", async (req, res) => {
       userid = verified;
       user = await User.findOne({ _id: userid });
     } catch (err) {
-      res.status(400).send("Invalid Token");
+      res.status(400);
     }
   }
-  let cookieid = req.cookies["moviebookingid"];
-  const movie = await Movies.findOne({ _id: cookieid });
-  res.render("bookTicket", { loginCheck, user, movie });
+  let cookieid = await req.cookies["moviebookingid"];
+  const shows = await Shows.find({ movie_id: cookieid });
+  const theatres = await Theatre.find();
+  res.render("bookTicket", { loginCheck, user, shows, theatres });
 });
 
 router.post("/savemovieid", (req, res) => {
