@@ -22,6 +22,7 @@ router.get("/", async (req, res) => {
   const movie_data = await Movies.find(function (err, document) {
     allMovies = document;
   });
+  console.log("Done");
   res.render("welcome", { allMovies, loginCheck, user });
 });
 
