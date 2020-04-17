@@ -12,7 +12,8 @@ app.set("view engine", "ejs");
 const authRoute = require("./routes/auth");
 const homeRoute = require("./routes/home");
 const postRoute = require("./routes/post");
-const addMovie = require("./routes/admin/addMovie");
+const admin = require("./routes/admin/admin");
+const bookMovie = require("./routes/bookticket");
 
 dotenv.config();
 
@@ -28,6 +29,7 @@ app.use(cookieParser());
 app.use("/user", authRoute);
 app.use("/posts", postRoute);
 app.use("/", homeRoute);
-app.use("/addmovie", addMovie);
+app.use("/admin", admin);
+app.use("/bookticket", bookMovie);
 
 app.listen(3000, () => console.log("Server is running"));

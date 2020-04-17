@@ -3,15 +3,25 @@ const verify = require("../verifyToken");
 const movies = require("../../model/movies");
 const User = require("../../model/user");
 
-router.get("/", verify, async (req, res) => {
+router.get("/addMovie", verify, async (req, res) => {
   const user = await User.findOne({ _id: req.user });
   if (!user || user.accountType != 0) {
     return res.send("bad request");
   }
-  res.render("addMovie");
+  const loginCheck = 1;
+  res.render("addMovie", { loginCheck, user });
 });
 
-router.post("/", verify, async (req, res) => {
+router.get("/addTheatre", verify, async (req, res) => {
+  const user = await User.findOne({ _id: req.user });
+  if (!user || user.accountType != 0) {
+    return res.send("bad request");
+  }
+  const loginCheck = 1;
+  res.render("addTheatre", { loginCheck, user });
+});
+
+router.post("/addMovie", verify, async (req, res) => {
   const user = await User.findOne({ _id: req.user });
   if (!user || user.accountType != 0) {
     return res.send("bad request");

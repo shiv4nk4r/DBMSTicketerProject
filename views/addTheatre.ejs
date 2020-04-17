@@ -54,44 +54,37 @@
   </div>
 </nav>
 
-<div class="container-fluid mt-4">
-  <p class="h2">Movies</p>
-</div>
-<div class="container-fluid mt-4">
-  <div class="row">
-    <% for(var movie of allMovies) { %>
-    <div class="col-auto mb-3">
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title"><%= movie.name %></h5>
-          <h6 class="card-subtitle mb-2 text-muted"><%= movie.director %></h6>
-          <p class="card-text">
-            <%= movie.descritpion %>
-          </p>
-          <button
-            type="button"
-            class="btn btn-outline-primary"
-            onclick="request_access(this); window.location.href = '/bookticket';"
-            id="<%= movie._id %>"
-          >
-            Book Tickets
-          </button>
+<div class="row mt-5">
+  <div class="col-md-6 m-auto">
+    <div class="card card-body">
+      <h1 class="text-center mb-3">
+        Add Theatre
+      </h1>
+      <form action="/admin/addmovie" method="POST">
+        <div class="form-group">
+          <label for="name">Theatre Name</label>
+          <input
+            type="name"
+            id="name"
+            name="name"
+            class="form-control"
+            placeholder="Enter Name"
+          />
         </div>
-      </div>
+        <div class="form-group">
+          <label for="name">Location</label>
+          <input
+            type="name"
+            id="location"
+            name="location"
+            class="form-control"
+            placeholder="Enter Location"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">
+          Add
+        </button>
+      </form>
     </div>
-    <% } %>
   </div>
 </div>
-<script>
-  function request_access($this) {
-    console.log("button clicked");
-    var request_data = $this.id;
-    console.log("data: " + request_data);
-    $.post("bookticket/savemovieid", { request_data: request_data }, function (
-      json
-    ) {
-      $("#request-access").hide();
-      console.log("requested access complete");
-    });
-  }
-</script>
