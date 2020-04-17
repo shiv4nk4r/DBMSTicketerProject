@@ -1,0 +1,68 @@
+<div class="row mt-5">
+  <div class="col-md-6 m-auto">
+    <div class="card card-body">
+      <h1 class="text-center mb-3">
+        Add movie
+      </h1>
+      <form action="/addmovie" method="POST">
+        <div class="form-group">
+          <label for="name">MovieName</label>
+          <input
+            type="name"
+            id="name"
+            name="moviename"
+            class="form-control"
+            placeholder="Enter Name"
+          />
+        </div>
+        <div class="container">
+          <label for="releasedate">releasedate:</label>
+          <input type="date" id="releasedate" name="releasedate" />
+        </div>
+        <div class="form-group">
+          <label for="name">director</label>
+          <input
+            type="name"
+            id="director"
+            name="director"
+            class="form-control"
+            placeholder="Enter director"
+          />
+        </div>
+        <div class="form-group">
+          <label for="name">genre</label>
+          <input
+            type="name"
+            id="genre"
+            name="genre"
+            class="form-control"
+            placeholder="Enter genre"
+          />
+        </div>
+        <div class="form-group">
+          <label for="name">desc</label>
+          <input
+            type="name"
+            id="description"
+            name="description"
+            class="form-control"
+            placeholder="Enter desc"
+          />
+        </div>
+        <div class="form-group">
+          <label for="name">Rating</label>
+          <input
+            type="name"
+            id="rating"
+            name="rating"
+            class="form-control"
+            placeholder="Enter desc"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">
+          Add
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

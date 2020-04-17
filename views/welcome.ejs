@@ -1,0 +1,76 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Ticketer</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarText"
+    aria-controls="navbarText"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#"
+          >Home <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Book Tickets</a>
+      </li>
+      <% if(user && user.accountType==0) { %>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Admin Panel</a>
+      </li>
+      <% }%> <% if(user && user.accountType==2) { %>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Critic Movies</a>
+      </li>
+      <% }%>
+    </ul>
+    <span class="navbar-text">
+      <% if(loginCheck==0){ %>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/user/login">Login / Signin</a>
+        </li>
+      </ul>
+      <% } else { %>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/user/logout"
+            >Logout as <% if(user) {%> <%= user.name %> <% } %></a
+          >
+        </li>
+      </ul>
+      <% } %>
+    </span>
+  </div>
+</nav>
+
+<div class="container-fluid mt-4">
+  <p class="h2">Movies</p>
+</div>
+<div class="container-fluid mt-4">
+  <div class="row">
+    <% for(var movie of allMovies) { %>
+    <div class="col-auto mb-3">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= movie.name %></h5>
+          <h6 class="card-subtitle mb-2 text-muted"><%= movie.director %></h6>
+          <p class="card-text">
+            <%= movie.descritpion %>
+          </p>
+          <button type="button" class="btn btn-outline-primary">
+            Book Tickets
+          </button>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</div>
