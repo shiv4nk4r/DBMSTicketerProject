@@ -91,8 +91,7 @@ router.post("/login", async (req, res) => {
     .cookie("auth-token", token, {
       maxAge: 3600000,
     })
-    .redirect("/")
-    .send(token);
+    .redirect("/");
 });
 
 module.exports = router;
